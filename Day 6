@@ -1,0 +1,25 @@
+LeetCode Problem 954
+Array of Doubled Pairs
+https://leetcode.com/problems/array-of-doubled-pairs/
+
+class Solution {
+public:
+    bool canReorderDoubled(vector<int>& arr) {
+        unordered_map<int, int> umap;
+        for(auto i:arr) umap[i]++;
+        sort(arr.begin(), arr.end(), [] (int a, int b) {
+            return abs(a) < abs(b);
+        });
+
+        for(int i=0; i<arr.size(); i++){
+            if(umap[arr[i]]>0 && umap[2*arr[i]]>0){
+                umap[arr[i]]--;
+                umap[2*arr[i]]--;
+            }
+            else if (umap[arr[i]]>0 && umap[2*arr[i]]<=0){
+                return false;
+            }
+        }
+        return true;
+    }
+};

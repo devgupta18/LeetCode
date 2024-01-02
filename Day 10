@@ -1,0 +1,27 @@
+LeetCode Problem 2610
+Convert an Array Into a 2D Array With Conditions
+https://lnkd.in/gWS2bMSX
+
+class Solution {
+public:
+    vector<vector<int>> findMatrix(vector<int>& nums) {
+        vector<vector<int>> ans;
+        int k = 0;
+        while(true) {
+            vector<int> temp;
+            for(int i=0; i<nums.size(); i++) {
+                if(find(temp.begin(), temp.end(), nums[i]) != temp.end() || nums[i] == -1) {
+                    continue;
+                }
+                else {
+                    temp.push_back(nums[i]);
+                    k++;
+                    nums[i] = -1;
+                }
+            }
+            ans.push_back(temp);
+            if(k == nums.size()) break;
+        }
+        return ans;
+    }
+};

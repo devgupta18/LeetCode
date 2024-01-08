@@ -1,0 +1,20 @@
+LeetCode Problem 1496
+Path Crossing
+https://lnkd.in/gDUg5Pem
+
+class Solution {
+public:
+    bool isPathCrossing(string path) {
+        set<pair<int, int>> s;
+        int x = 0, y = 0;
+        for(auto i:path) {
+            s.insert({x,y});
+            if(i == 'N') x++;
+            else if(i == 'S') x--;
+            else if(i == 'E') y++;
+            else y--;
+            if(s.contains({x,y})) return 1;
+        }
+        return 0;
+    }
+};

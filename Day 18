@@ -1,0 +1,15 @@
+LeetCode Problem 2710
+Remove Trailing Zeros From a String
+https://lnkd.in/gjWTN9By
+
+class Solution {
+public:
+    string removeTrailingZeros(string num) {
+        int n = num.length()-1;
+        while(n >= 0) {
+            if(num[n] != '0') break;
+            n--;
+        }
+        return num.substr(0,n+1);
+    }
+};

@@ -1,0 +1,19 @@
+LeetCode Problem 1704
+Determine if String Halves Are Alike
+https://lnkd.in/gEVcGGvA
+
+class Solution {
+public:
+    bool halvesAreAlike(string s) {
+        int cnt1=0, cnt2=0;
+        int i=0, j=s.length()-1;
+        string st = "aeiouAEIOU";
+        while(i < j) {
+            if(st.find(s[i]) < st.length()) cnt1++;
+            if(st.find(s[j]) < st.length()) cnt2++;
+            i++;
+            j--;
+        }
+        return cnt1 == cnt2;
+    }
+};

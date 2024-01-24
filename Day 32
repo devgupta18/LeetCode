@@ -1,0 +1,28 @@
+LeetCode Problem 1945
+Sum of Digits of String After Convert
+https://lnkd.in/gqumetbM
+
+class Solution {
+public:
+    int digitSum(string s) {
+        int sum = 0;
+        for(int i=0; i<s.length(); i++) {
+            sum += (s[i] - '0');
+        }
+        return sum;
+    }
+    int getLucky(string s, int k) {
+        string temp;
+        for(int i=0; i<s.length(); i++) {
+            int num = s[i] - 'a' + 1;
+            temp += to_string(num);
+        }
+        int ans = 0, i=0;
+        while(i < k) {
+            ans = digitSum(temp);
+            temp = to_string(ans);
+            i++;
+        }
+        return ans;
+    }
+};

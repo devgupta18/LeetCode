@@ -1,0 +1,27 @@
+LeetCode Problem 202
+Happy Number
+https://lnkd.in/gkexB4YZ
+
+class Solution {
+public:
+    float sqSum(int n) {
+        float sum = 0;
+        while(n != 0) {
+            int digit = n%10;
+            sum += digit*digit;
+            n /= 10;
+        }
+        return sum;
+    }
+
+    bool isHappy(int n) {
+        int i=7;
+        while(i > 0) {
+            n = sqSum(n);
+            cout<<n;
+            if(n == 1) return true;
+            i--;
+        }
+        return false;
+    }
+};

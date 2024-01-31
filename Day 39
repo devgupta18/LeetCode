@@ -1,0 +1,22 @@
+LeetCode Problem 739
+Daily Temperatures
+https://lnkd.in/g2Bq-Grf
+
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& temp) {
+        vector<int> result(temp.size(), 0);
+        vector<int> st;
+        for(int i=temp.size()-1; i >= 0; i--) {
+            int currTemp = temp[i];
+            while(!st.empty() && currTemp >= temp[st.back()]) {
+                st.pop_back();
+            }
+            if(!st.empty()) {
+                result[i] = st.back() - i;
+            }
+            st.push_back(i);
+        }
+        return result;
+    }
+};

@@ -1,0 +1,21 @@
+LeetCode Problem 3024
+Type of Triangle II
+https://lnkd.in/gn6FEhGs
+
+class Solution {
+public:
+    bool trianglePossible(vector<int>& nums) {
+        if(nums[0] + nums[1] <= nums[2] || nums[1] + nums[2] <= nums[0] || nums[0] + nums[2] <= nums[1]) {
+            return 0;
+        }
+        return 1;
+    }
+    string triangleType(vector<int>& nums) {
+        if(!trianglePossible(nums)) return "none";
+        string ans;
+        if(nums[0] == nums[1] && nums[0] == nums[2]) ans = "equilateral";
+        else if(nums[0] == nums[1] || nums[0] == nums[2] || nums[1] == nums[2]) ans = "isosceles";
+        else ans = "scalene";
+        return ans;
+    }
+};

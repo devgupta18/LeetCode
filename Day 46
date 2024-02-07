@@ -1,0 +1,21 @@
+LeetCode Problem 451
+Sort Characters By Frequency
+https://lnkd.in/gWQq8ErH
+
+class Solution {
+public:
+    string frequencySort(string s) {
+        vector<pair<int, char>> v;
+        unordered_map<char, int> mp;
+        string ans = "";
+        for(auto i:s) mp[i]++;
+        for(auto i:mp) {
+            v.push_back({i.second, i.first});
+        }
+        sort(v.begin(), v.end(), greater<pair<int, char>>());
+        for(auto i:v) {
+            while(i.first--) ans += i.second;
+        }
+        return ans;
+    }
+};

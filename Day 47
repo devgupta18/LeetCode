@@ -1,0 +1,32 @@
+LeetCode Problem 896
+Monotonic Array
+https://lnkd.in/g5VNUhgK
+
+class Solution {
+public:
+    bool isMonotonic(vector<int>& nums) {
+        bool ans = true;
+        for(int i=1; i<nums.size(); i++) {
+            if(nums[i] < nums[i-1]) {
+                ans = false;
+                break;
+            }
+            else {
+                ans = true;
+            }
+        }
+        if(ans) return true;
+
+        for(int i=1; i<nums.size(); i++) {
+            if(nums[i] > nums[i-1]) {
+                ans = false;
+                break;
+            }
+            else {
+                ans = true;
+            }
+        }
+        if(ans) return true;
+        return false;
+    }
+};

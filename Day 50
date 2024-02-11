@@ -1,0 +1,32 @@
+LeetCode Problem 1768
+Merge Strings Alternately
+https://lnkd.in/gc94Smx7
+
+class Solution {
+public:
+    string mergeAlternately(string word1, string word2) {
+        int i=0, j=0, m=word1.length(), n=word2.length();
+        bool flag = true;
+        string ans = "";
+        while(i < m && j < n) {
+            if(flag) {
+                ans += word1[i++];
+            }
+            else {
+                ans += word2[j++];
+            }
+            flag = !flag;
+        }
+        if(i < m) {
+            while(i < m) {
+                ans += word1[i++];
+            }
+        }
+        else if(j < n) {
+            while(j < n) {
+                ans += word2[j++];
+            }
+        }
+        return ans;
+    }
+};

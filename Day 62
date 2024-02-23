@@ -1,0 +1,23 @@
+LeetCode Problem 1346
+Check If N and Its Double Exist
+https://lnkd.in/giCfmhGr
+
+class Solution {
+public:
+    bool checkIfExist(vector<int>& arr) {
+        int cnt = 0;
+        set<int> st;
+        for(auto i:arr) {
+            st.insert(i);
+        }
+        for(auto i:arr) {
+            if(i == 0) {
+                cnt++;
+                continue;
+            }
+            if(st.contains(2 * i)) return true;
+        }
+        if(cnt >= 2) return true;
+        return false;
+    }
+};

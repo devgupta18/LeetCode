@@ -1,0 +1,19 @@
+LeetCode Problem 520
+Detect Capital
+https://lnkd.in/gBh_nPGe
+
+class Solution {
+public:
+    bool isCapital(char i) {
+        if(i >= 65 && i <= 90) return true;
+        return false;
+    }
+    bool detectCapitalUse(string word) {
+        int cnt = 0, n = word.length();
+        for(auto i:word) {
+            if(!isCapital(i)) cnt++;
+        }
+        if(cnt == 0 || cnt == n || (cnt == n-1 && isCapital(word[0]))) return true;
+        return false;
+    }
+};

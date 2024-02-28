@@ -1,0 +1,29 @@
+LeetCode Problem 2965
+Find Missing and Repeated Values
+https://lnkd.in/gJyuYNEp
+
+class Solution {
+public:
+    vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
+        int n = grid.size(), missing, repeated;
+        bool flag1 = true, flag2 = true;
+        vector<int> values(n*n + 1, 0);
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<n; j++) {
+                values[grid[i][j]]++;
+            }
+        }
+        for(int i=1; i<n*n+1; i++) {
+            if(values[i] == 0 && flag1) {
+                missing = i;
+                flag1 = false;
+            }
+            if(values[i] == 2 && flag2) {
+                repeated = i;
+                flag2 = false;
+            }
+            if(!flag1 && !flag2) break;
+        }
+        return {repeated, missing};
+    }
+};

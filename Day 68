@@ -1,0 +1,31 @@
+LeetCode Problem 59
+Spiral Matrix II
+https://lnkd.in/gUsrDkde
+
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        int stRow = 0, stCol = 0, enRow = n-1, enCol = n-1;
+        vector<vector<int>> v(n, vector<int> (n));
+        int val = 1;
+        while(stCol <= enCol && stRow <= enRow) {
+            for(int i=stCol; i<=enCol; i++) {
+                v[stRow][i] = val++;
+            } 
+            stRow++;
+            for(int i=stRow; i<=enRow; i++) {
+                v[i][enCol] = val++;
+            }
+            enCol--;
+            for(int i=enCol; i>=stCol; i--) {
+                v[enRow][i] = val++;
+            }
+            enRow--;
+            for(int i=enRow; i>=stRow; i--) {
+                v[i][stCol] = val++;
+            }
+            stCol++;
+        }
+        return v;
+    }
+};

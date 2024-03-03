@@ -1,0 +1,22 @@
+LeetCode Problem 19
+Remove Nth Node From End of List
+https://lnkd.in/gJjv-M8g
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* dummy = new ListNode();
+        ListNode *fast = dummy, *slow = dummy;
+        dummy -> next = head;
+        while(n != 0) {
+            fast = fast -> next;
+            n--;
+        }
+        while(fast -> next != NULL) {
+            slow = slow -> next;
+            fast = fast -> next;
+        }
+        slow -> next = slow -> next -> next;
+        return dummy -> next;
+    }
+};

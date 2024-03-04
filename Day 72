@@ -1,0 +1,29 @@
+LeetCode Problem 948
+Bag of Tokens
+https://lnkd.in/gndiGSdR
+
+class Solution {
+public:
+    int bagOfTokensScore(vector<int>& tokens, int power) {
+        if(tokens.empty()) return 0;
+        sort(tokens.begin(), tokens.end());
+        if(tokens[0] > power) return 0;
+        int ans=0, n=tokens.size()-1, i=0;
+        while(i < n) {
+            if(power >= tokens[i]) {
+                power -= tokens[i];
+                ans++;
+                i++;
+            }
+            else {
+                if(ans > 0) {
+                    power += tokens[n];
+                    n--;
+                    ans--;
+                }
+            }
+        }
+        if(tokens[i] <= power) ans++;
+        return ans;
+    }
+};

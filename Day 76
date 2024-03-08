@@ -1,0 +1,26 @@
+LeetCode Problem 3005
+Count Elements With Maximum Frequency
+https://lnkd.in/gD3rgug7
+
+class Solution {
+public:
+    int maxFrequencyElements(vector<int>& nums) {
+        unordered_map<int, int> mp;
+        for(auto i:nums) {
+            mp[i]++;
+        }
+        vector<int> freq;
+        for(auto i=mp.begin(); i!=mp.end(); i++) {
+            freq.push_back(i -> second);
+        }
+        sort(freq.begin(), freq.end());
+        int n=freq.size()-2, cnt=freq[n+1];
+        for(int i=n; i>=0; i--) {
+            if(freq[i] == freq[i+1]) {
+                cnt += freq[i];
+            }
+            else break;
+        }
+        return cnt;
+    }
+};

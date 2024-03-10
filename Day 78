@@ -1,0 +1,18 @@
+LeetCode Problem 349
+Intersection of Two Arrays
+https://lnkd.in/gNShSmBy
+
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int> st(nums1.begin(), nums1.end());
+        vector<int> ans;
+        for(auto i:nums2) {
+            auto it = find(ans.begin(), ans.end(), i);
+            if(st.contains(i) && it == ans.end()) {
+                ans.push_back(i);
+            }
+        }
+        return ans;
+    }
+};

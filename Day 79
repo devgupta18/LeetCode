@@ -1,0 +1,31 @@
+LeetCode Problem 791
+Custom Sort String
+https://lnkd.in/gRYHwuHn
+
+class Solution {
+public:
+    string customSortString(string order, string s) {
+        unordered_map<char, int> mp;
+        string ans = "";
+        for(auto i:s) {
+            mp[i]++;
+        }
+        for(auto i:order) {
+            if(mp.contains(i)) {
+                while(mp[i] != 0) {
+                    ans += i;
+                    mp[i]--;
+                }
+            }
+        }
+        for(auto i=mp.begin(); i != mp.end(); i++) {
+            if(i -> second != 0) {
+                while(i -> second != 0) {
+                    ans += i -> first;
+                    i -> second --;
+                }
+            }
+        }
+        return ans;
+    }
+};

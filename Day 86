@@ -1,0 +1,23 @@
+LeetCode Problem 452
+Minimum Number of Arrows to Burst Balloons
+https://lnkd.in/evxx9Dn3
+
+class Solution {
+public:
+    static bool cmp(const vector<int>& a, const vector<int>& b) {
+        return a[0] < b[0];
+    }
+    int findMinArrowShots(vector<vector<int>>& points) {
+        sort(points.begin(), points.end(), cmp);
+        int arrows = 1, end = points[0][1];
+        for (auto i = 1; i < points.size(); ++i) {
+            if (points[i][0] > end) {
+                arrows++;
+                end = points[i][1];
+            } else {
+                end = min(end, points[i][1]);
+            }
+        }
+        return arrows;
+    }
+};

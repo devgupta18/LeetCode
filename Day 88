@@ -1,0 +1,26 @@
+LeetCode Problem 1669
+Merge In Between Linked Lists
+https://lnkd.in/gb3vsZP8
+
+class Solution {
+public:
+    ListNode* mergeInBetween(ListNode* list1, int a, int b, ListNode* list2) {
+        ListNode *dummy = list1, *prev;
+        int travel = b - a;
+        while(a) {
+            prev = dummy;
+            dummy = dummy -> next;
+            a--;
+        }
+        while(travel) {
+            dummy = dummy -> next;
+            travel--;
+        }
+        prev -> next = list2;
+        while(prev -> next != NULL) {
+            prev = prev -> next;
+        }
+        prev -> next = dummy -> next;
+        return list1;
+    }
+};

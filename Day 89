@@ -1,0 +1,18 @@
+LeetCode Problem 206
+Reverse Linked List
+https://lnkd.in/ggqiTcCg
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode *prev = NULL;
+        ListNode *dummy;
+        while(head != NULL) {
+            dummy = head -> next;
+            head -> next = prev;
+            prev = head;
+            head = dummy;
+        }
+        return prev;
+    }
+};

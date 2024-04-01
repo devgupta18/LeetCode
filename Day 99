@@ -1,0 +1,19 @@
+LeetCode Problem 58
+Length of Last Word
+https://lnkd.in/gHDkty7M
+
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int cnt=0, n=s.length()-1;
+        while(n != 0) {
+            if(s[n] != ' ') break;
+            n--;
+        }
+        for(; n>=0; n--) {
+            if(s[n] != ' ') cnt++;
+            else break;
+        }
+        return cnt;
+    }
+};

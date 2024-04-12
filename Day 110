@@ -1,0 +1,30 @@
+LeetCode Problem 42
+Trapping Rain Water
+https://lnkd.in/e4f6Nx9r
+
+class Solution {
+public:
+    int trap(vector<int>& a) {
+        int n = a.size();
+        int l=0, r=n-1, lMax=0, rMax=0, res=0;
+
+        while(l <= r) {
+            if(a[l] <= a[r]) {
+                if(a[l] >= lMax) lMax = a[l];
+                else {
+                    res += (lMax - a[l]);
+                }
+                l++;
+            }
+            else {
+                if(a[r] >= rMax) rMax = a[r];
+                else {
+                    res += (rMax - a[r]);    
+                }
+                r--;
+            }
+        }
+
+        return res;
+    }
+};

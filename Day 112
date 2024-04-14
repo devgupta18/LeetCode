@@ -1,0 +1,37 @@
+LeetCode Problem 228
+Summary Ranges
+https://lnkd.in/gMgapSJR
+
+class Solution {
+public:
+    vector<string> summaryRanges(vector<int>& nums) {
+        int n = nums.size();
+        if(n == 0) {
+            return {};
+        }
+        int s = nums[0];
+        vector<string> ans;
+        for(int i=1; i<n; i++) {
+            if(nums[i-1] + 1 != nums[i]) {
+                string temp = "";
+                if(s == nums[i-1]) {
+                    temp = to_string(s);
+                }
+                else {
+                    temp += to_string(s) + "->" + to_string(nums[i-1]);
+                }
+                ans.push_back(temp);
+                s = nums[i];
+            }
+        }
+        string temp;
+        if(s == nums[n-1]) { 
+            temp = to_string(s);
+        }
+        else {
+            temp = to_string(s) + "->" + to_string(nums[n-1]);
+        }
+        ans.push_back(temp);
+        return ans;
+    }
+};

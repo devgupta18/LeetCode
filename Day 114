@@ -1,0 +1,24 @@
+LeetCode Problem 2952
+Minimum Number of Coins to be Added
+https://lnkd.in/gWKRj6a4
+
+class Solution {
+public:
+    int minimumAddedCoins(vector<int>& coins, int target) {
+        sort(coins.begin(), coins.end());
+        int ans=0;
+        long sum=0;
+        for(auto i:coins) {
+            while(i > sum+1) {
+                ans++;
+                sum += sum+1;
+            }
+            sum += i;
+        }
+        while(sum < target) {
+            sum += sum+1;
+            ans++;
+        }
+        return ans;
+    }
+};

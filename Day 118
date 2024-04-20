@@ -1,0 +1,26 @@
+LeetCode Problem 61
+Rotate List
+https://lnkd.in/gFX3UT2N
+
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if(head == NULL || head -> next == NULL) return head;
+
+        int cnt = 1;
+        ListNode *cur = head;
+        while(cur -> next && ++cnt) {
+            cur = cur -> next;
+        }
+        cur -> next = head;
+        k = k % cnt;
+        k = cnt - k;
+        while(k > 0) {
+            cur = cur -> next;
+            k--;
+        }
+        head = cur -> next;
+        cur -> next = NULL;
+        return head;
+    }
+};

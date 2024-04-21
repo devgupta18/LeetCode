@@ -1,0 +1,18 @@
+LeetCode Problem 1431
+Kids With the Greatest Number of Candies
+https://lnkd.in/gJQzXxSk
+
+class Solution {
+public:
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+        vector<bool> ans;
+        int newCandies, maxCandies = INT_MIN;
+        for(int candy : candies) {
+            maxCandies = max(maxCandies, candy);
+        }
+        for(int i=0; i<candies.size(); i++) {
+            ans.push_back(candies[i] + extraCandies >= maxCandies);
+        }
+        return ans;
+    }
+};

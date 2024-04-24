@@ -1,0 +1,19 @@
+LeetCode Problem 1137
+N-th Tribonacci Number
+https://lnkd.in/gwnAtaB5
+
+class Solution {
+public:
+    int tribonacci(int n) {
+        if(n == 0) return 0;
+        else if(n == 1 || n == 2) return 1;
+        int i=0, j=1, k=1, sum = 0;
+        for(int l=3; l<=n; l++) {
+            sum = i+j+k;
+            i = j;
+            j = k;
+            k = sum;
+        }
+        return sum;
+    }
+};

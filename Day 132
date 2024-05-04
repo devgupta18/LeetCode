@@ -1,0 +1,15 @@
+LeetCode Problem 2011
+Final Value of Variable After Performing Operations
+https://lnkd.in/gEsDCUJ6
+
+class Solution {
+public:
+    int finalValueAfterOperations(vector<string>& o) {
+        int x=0;
+        for(int i=0; i<o.size(); i++) {
+            if(o[i][0] == '+' || o[i][2] == '+') x++;
+            else x--;
+        }
+        return x;
+    }
+};

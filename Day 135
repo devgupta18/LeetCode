@@ -1,0 +1,35 @@
+LeetCode Problem 2816
+Double a Number Represented as a Linked List
+https://lnkd.in/gPkEgaWD
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode *dummy = NULL;
+        while(head != NULL) {
+            ListNode *temp = head -> next;
+            head -> next = dummy;
+            dummy = head;
+            head = temp;
+        }
+        return dummy;
+    }
+    ListNode* doubleIt(ListNode* head) {
+        head = reverseList(head);
+        ListNode *temp = head, *prev;
+        int carry = 0;
+        while(temp != NULL) {
+            int num = temp -> val;
+            temp -> val = (num*2 + carry)%10;
+            carry = (num*2 + carry)/10;
+            prev = temp;
+            temp = temp -> next;
+        }
+        if(carry) {
+            ListNode *next = new ListNode(carry);
+            prev -> next = next;
+        }
+        head = reverseList(head);
+        return head;
+    }
+};

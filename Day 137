@@ -1,0 +1,17 @@
+LeetCode Problem 3075
+Maximize Happiness of Selected Children
+https://lnkd.in/gvfEQ65M
+
+class Solution {
+public:
+    long long maximumHappinessSum(vector<int>& h, int k) {
+        sort(h.begin(), h.end(), greater<int>());
+        long long sum = 0;
+        int dec = 0;
+        for(int i=0; i<k; i++) {
+            sum = max(sum, sum + h[i] - dec);
+            dec++;
+        }
+        return sum;
+    }
+};

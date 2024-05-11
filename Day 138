@@ -1,0 +1,22 @@
+LeetCode Problem 137
+Single Number II
+https://lnkd.in/gd8MJbTb
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        if(nums.size() == 1) return nums[0];
+        map<int,int> m;
+        for(int i=0; i<nums.size(); i++) {
+            m[nums[i]]++;
+        }
+        int ans;
+        for(auto i:m) {
+            if(i.second == 1) {
+                ans = i.first;
+                break;
+            }
+        }
+        return ans;
+    }
+};

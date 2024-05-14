@@ -1,0 +1,21 @@
+LeetCode Problem 383
+Ransom Note
+https://lnkd.in/gCbwJAgy
+
+class Solution {
+public:
+    bool canConstruct(string ran, string mag) {
+        sort(ran.begin(), ran.end());
+        sort(mag.begin(), mag.end());
+        int i=0, j=0;
+        while(i < ran.size() && j < mag.size()) {
+            if(ran[i] == mag[j]) {
+                i++,j++;
+            }
+            else {
+                j++;
+            }
+        }
+        return i == ran.size();
+    }
+};

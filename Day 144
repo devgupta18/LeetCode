@@ -1,0 +1,22 @@
+LeetCode Problem 1492
+The kth Factor of n
+https://lnkd.in/gjmQEag6
+
+class Solution {
+public:
+    int kthFactor(int n, int k) {
+        if(k == 1) return 1;
+        int cnt = 1, ans=-1;
+        for(int i=2; i<=n/2; i++) {
+            if(n%i == 0) {
+                cnt++;
+            }
+            if(cnt == k) {
+                ans = i;
+                break;
+            }
+        }
+        if(cnt+1 == k) return n;
+        return ans;
+    }
+};
